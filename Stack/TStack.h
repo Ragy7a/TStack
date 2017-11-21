@@ -1,4 +1,8 @@
-#pragma once
+#include <iostream>
+#pragma once 
+using namespace std;
+const int MAX_STACK_SIZE = 100000000;
+
 template <class T>
 class TStack
 {
@@ -8,8 +12,8 @@ class TStack
 public:
 	TStack(int _MaxSize = 100)
 	{
-		if (MaxSize <= 0)
-			throw _MaxSize;
+		if ((_MaxSize <= 0)||(_MaxSize>=MAX_STACK_SIZE))
+			throw "Exception";
 		MaxSize =_MaxSize;
 		Size = 0;
 		Mas = new T [MaxSize];
@@ -55,7 +59,7 @@ public:
 		Mas[Size]=El;
 		Size++;
 	}
-	T Top() const 
+	T Top() 
 	{
 		if (IsEmpty()) throw -1;
 		return Mas[Size-1];
@@ -66,5 +70,8 @@ public:
 		Size--;
 		return Mas[Size];
 	}
-
+	void TStack<T>::clear() 
+	{
+		Size = 0;
+	}
 };
